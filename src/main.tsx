@@ -25,6 +25,7 @@ import {
   X,
 } from "lucide-react";
 import { TableScene } from "./TableScene";
+import { useSoundtrack } from "./soundtrack";
 import {
   HANDS,
   JOKERS,
@@ -190,13 +191,22 @@ function App() {
   const [modal, setModal] = useState("");
   const [selected, setSelected] = useState<string[]>([]);
   const [sort, setSort] = useState<"rank" | "suit">("rank");
-  const [settings, setSettings] = useState(() =>
-    read("gb-settings", {
-      sound: true,
-      motion: !matchMedia("(prefers-reduced-motion: reduce)").matches,
-      volume: 60,
-    }),
-  );
+  const [settings, setSettings] = useState(() => ({
+    sound: true,
+    motion: !matchMedia("(prefers-reduced-motion: reduce)").matches,
+    volume: 60,
+    music: true,
+    musicVolume: 60,
+    ...read<
+      Partial<{
+        sound: boolean;
+        motion: boolean;
+        volume: number;
+        music: boolean;
+        musicVolume: number;
+      }>
+    >("gb-settings", {}),
+  }));
   const [notice, setNotice] = useState("");
   const [guideStep, setGuideStep] = useState(0);
   const [seed, setSeed] = useState("");
@@ -204,6 +214,12 @@ function App() {
     read("gb-stats", { runs: 0, best: 0, wins: 0 }),
   );
   const audio = useRef<AudioContext | null>(null);
+  const soundtrack = useSoundtrack({
+    enabled: settings.sound && settings.music,
+    volume: settings.musicVolume,
+    scene:
+      screen === "menu" ? "lounge" : run?.stage === "shop" ? "shop" : "table",
+  });
   useEffect(() => {
     save("gb-run-v1", run);
   }, [run]);
@@ -309,8 +325,43 @@ function App() {
           <p className="muted">Make yourself comfortable at the table.</p>
           <label className="setting-row">
             <span>
-              <b>Sound effects</b>
-              <small>Card selections and scoring tones</small>
+              <b>Lounge soundtrack</b>
+              <small>Original piano, bass, vibraphone & brushes</small>
+            </span>
+            <input
+              aria-label="Lounge soundtrack"
+              type="checkbox"
+              checked={settings.music}
+              onChange={(e) => {
+                setSettings({ ...settings, music: e.target.checked });
+                soundtrack.unlock();
+              }}
+            />
+          </label>
+          <label className="setting-row">
+            <span>
+              Music volume <b>{settings.musicVolume}%</b>
+            </span>
+            <input
+              aria-label="Music volume"
+              type="range"
+              min="0"
+              max="100"
+              value={settings.musicVolume}
+              onChange={(e) =>
+                setSettings({ ...settings, musicVolume: +e.target.value })
+              }
+            />
+          </label>
+          <p className="fine">
+            {soundtrack.status === "playing"
+              ? "Now playing · High Limit Lounge"
+              : "Tap Play Music in the top bar to enable audio."}
+          </p>
+          <label className="setting-row">
+            <span>
+              <b>All audio</b>
+              <small>Master sound switch</small>
             </span>
             <input
               type="checkbox"
@@ -564,9 +615,27 @@ function App() {
           <span className="hub-word">/ THE GAMBL SERIES</span>
         </a>
         <div className="top-actions">
-          <span className="edition">
-            <i /> THE HIGH LIMIT LOUNGE
-          </span>
+          <button
+            className="edition music-toggle"
+            aria-label={
+              soundtrack.status === "playing" ? "Pause music" : "Play music"
+            }
+            onClick={() => {
+              if (soundtrack.status === "playing")
+                setSettings({ ...settings, music: false });
+              else {
+                setSettings({
+                  ...settings,
+                  sound: true,
+                  music: true,
+                  musicVolume: settings.musicVolume || 60,
+                });
+                soundtrack.unlock();
+              }
+            }}
+          >
+            <i /> {soundtrack.status === "playing" ? "MUSIC ON" : "PLAY MUSIC"}
+          </button>
           <button
             className="icon-button"
             aria-label={settings.sound ? "Mute sound" : "Enable sound"}

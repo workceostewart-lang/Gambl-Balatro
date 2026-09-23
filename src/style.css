@@ -2594,3 +2594,29 @@ dialog h3 {
     transition: none !important;
   }
 }
+
+.music-toggle {
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 9px 10px;
+  min-height: 32px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.music-toggle:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+@media (max-width: 650px) and (orientation: portrait) {
+  .edition.music-toggle {
+    display: inline-flex;
+    align-items: center;
+    font-size: 7px;
+    margin-right: 4px;
+    padding: 7px 6px;
+  }
+  .music-toggle i {
+    display: none;
+  }
+}

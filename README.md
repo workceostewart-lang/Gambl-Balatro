@@ -10,6 +10,7 @@ A menu-first poker roguelike foundation for FantomZone. React + TypeScript UI, T
 - `npm run build`
 - `node scripts/browser-check.mjs` (headless Microsoft Edge; set TEST_URL for a preview or deployed URL)
 - `python scripts/audit_assets.py`
+- `node scripts/music-check.mjs` (set TEST_URL to the running game)
 
 ## Current release: v0.1 solo preview
 
@@ -19,7 +20,7 @@ Mobile landscape uses a fixed dynamic-viewport layout. Portrait has a compact to
 
 ## Remaining PRD work
 
-CPU opponents, authoritative multiplayer rooms and reconnects, eight-step interactive tutorial, full 30-Joker catalog, additional boss modifiers (including the Final Call), skips and tags, vouchers, boosters, card modifiers and editions, consumable slots, endless mode, layered music, detailed scoring VFX, exact-size cover asset variants, and real-device 60fps validation. CPU and online menu entries explicitly show their development status. The current four rotating boss rules debuff one suit. Sound is synthesized interaction feedback, not the final soundtrack.
+CPU opponents, authoritative multiplayer rooms and reconnects, eight-step interactive tutorial, full 30-Joker catalog, additional boss modifiers (including the Final Call), skips and tags, vouchers, boosters, card modifiers and editions, consumable slots, endless mode, layered music, detailed scoring VFX, exact-size cover asset variants, and real-device 60fps validation. CPU and online menu entries explicitly show their development status. The current four rotating boss rules debuff one suit. Audio includes synthesized interaction feedback and an original 16-bar lounge soundtrack with piano-style chords, walking bass, vibraphone, and brushed percussion. Music starts after the first interaction or the Play Music button, has a separate persisted volume control, and pauses when the tab is hidden. Menu, shop, and table use different tempo/intensity settings; the full PRD track catalog and cinematic transitions remain future work.
 
 ## Deployment
 
