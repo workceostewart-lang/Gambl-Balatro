@@ -16,6 +16,6 @@ rules:
 release_2026_09_22:
   status: deployed_solo_preview
   game_url: https://balatro.fantomzone.app
-  worker_version: 31ab9797-307e-4a83-8d4d-f1b28e093390
+  worker_version: 561cd441-c127-47ad-b6a9-5bf7ec308366
   validation: 27_unit_tests; 8_live_viewports; 4_shop_viewports; python_asset_audit
   remaining: See README.md for the unimplemented full-PRD features.

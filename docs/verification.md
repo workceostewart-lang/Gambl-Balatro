@@ -10,3 +10,5 @@
 - Domain routing: existing Solitaire wildcard intercepted the new custom domain. Added only `balatro.fantomzone.app/*` to the game configuration; no existing route was modified.
 
 Screenshots and JSON reports are generated under ignored `test-results/`. Browser runs use headless Microsoft Edge, not physical phones; native Safari behavior, touch ergonomics, and sustained 60fps remain real-device checks. The release is a menu-first solo preview, not full PRD completion. See README.md for the remaining systems.
+
+Published homepage verification: 16 total game cards, all 15 prior links/titles unchanged, cover decoded successfully, mobile link opened Balatro, no page errors. FantomZone commit `f4d977e`, Cloudflare version `d4e25c03-6936-4d1d-b6e8-176301eb452d`. Final game Cloudflare version `561cd441-c127-47ad-b6a9-5bf7ec308366`; final 667×375 live smoke test showed all eight cards with no page errors.
