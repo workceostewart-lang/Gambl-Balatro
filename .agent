@@ -1,0 +1,21 @@
+name: Gamble Balatro
+source_of_truth: Gamble_Balatro_PRD.md
+priority: Menu, accessible landscape mobile layout, verified playable solo foundation.
+stack: React, TypeScript, Three.js/WebGL, Python asset and validation tooling, Cloudflare Workers static assets.
+repository: https://github.com/workceostewart-lang/Gambl-Balatro
+domain: https://balatro.fantomzone.app
+hub: https://fantomzone.app
+rules:
+  - Keep all cards, scoreboard and actions visible in landscape; account for safe areas.
+  - Pure scoring engine; deterministic seeded decks; never score pair kickers.
+  - Original artwork and names only. No real money wagering.
+  - Do not label unfinished CPU or multiplayer modes as playable.
+  - Run build, scoring tests and headless viewport checks before deployment.
+  - Preserve existing FantomZone game entries and deployment guard.
+
+release_2026_09_22:
+  status: deployed_solo_preview
+  game_url: https://balatro.fantomzone.app
+  worker_version: 31ab9797-307e-4a83-8d4d-f1b28e093390
+  validation: 27_unit_tests; 8_live_viewports; 4_shop_viewports; python_asset_audit
+  remaining: See README.md for the unimplemented full-PRD features.
