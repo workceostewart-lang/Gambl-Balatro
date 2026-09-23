@@ -561,7 +561,7 @@ function App() {
         <a href="https://fantomzone.app" className="hub-link">
           <ArrowLeft size={15} />
           <span className="fz">FZ</span> FANTOMZONE{" "}
-          <span className="hub-word">/ THE GAMBLE SERIES</span>
+          <span className="hub-word">/ THE GAMBL SERIES</span>
         </a>
         <div className="top-actions">
           <span className="edition">
@@ -597,7 +597,7 @@ function App() {
               <div className="series-label">
                 <span /> A FANTOMZONE ORIGINAL <span />
               </div>
-              <p className="gamble-title">GAMBLE</p>
+              <p className="gamble-title">GAMBL</p>
               <h1>
                 BALATRO<span>♦</span>
               </h1>
@@ -863,7 +863,7 @@ function App() {
                 <>
                   <div className="play-center">
                     <span className="table-watermark">
-                      GAMBLE <b>BALATRO</b>
+                      GAMBL <b>BALATRO</b>
                     </span>
                     {run.lastScore > 0 ? (
                       <div className="last-hand" key={run.lastScore}>

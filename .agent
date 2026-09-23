@@ -1,4 +1,4 @@
-name: Gamble Balatro
+name: Gambl Balatro
 source_of_truth: Gamble_Balatro_PRD.md
 priority: Menu, accessible landscape mobile layout, verified playable solo foundation.
 stack: React, TypeScript, Three.js/WebGL, Python asset and validation tooling, Cloudflare Workers static assets.

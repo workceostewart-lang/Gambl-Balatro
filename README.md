@@ -1,4 +1,4 @@
-# Gamble Balatro
+# Gambl Balatro
 
 A menu-first poker roguelike foundation for FantomZone. React + TypeScript UI, Three.js/WebGL felt renderer, Python asset validation, and Cloudflare static hosting.
 

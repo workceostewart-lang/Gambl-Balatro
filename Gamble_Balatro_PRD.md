@@ -1,17 +1,17 @@
-# Gamble Balatro — PRD (Gamble Series)
+# Gambl Balatro — PRD (Gambl Series)
 
 Sep 22, 2026 · Lex Stewart
 
 ## Overview
 
-Gamble Balatro is a poker roguelike deck-builder for the Gamble series: players build poker hands, stack Joker cards into a scoring engine, and beat escalating score targets across 8 antes. It is modeled on Balatro's core loop, wrapped in a premium luxury casino presentation.
+Gambl Balatro is a poker roguelike deck-builder for the Gambl series: players build poker hands, stack Joker cards into a scoring engine, and beat escalating score targets across 8 antes. It is modeled on Balatro's core loop, wrapped in a premium luxury casino presentation.
 
-**Name.** The game ships in the hub as **Gamble Balatro**. Mechanics follow Balatro closely; all Joker names, Boss Blinds, card art and characters are original to this project.
+**Name.** The game ships in the hub as **Gambl Balatro**. Mechanics follow Balatro closely; all Joker names, Boss Blinds, card art and characters are original to this project.
 
 **Goals**
 
 - Faithful Balatro-style scoring loop: Chips x Mult = Score, with Joker combos that scale into the thousands and beyond
-- Premium casino look and sound consistent with the rest of the Gamble series
+- Premium casino look and sound consistent with the rest of the Gambl series
 - Four ways to play: Solo run, vs CPU (Easy / Medium / Hard), multiplayer via room codes, and a guided Tutorial
 - A finished cover art tile so the game never shows a blank card in the game hub
 
@@ -223,7 +223,7 @@ CPU think time is 0.6–1.2 s per action so it feels like a player at the table.
 
 ### Multiplayer (room codes)
 
-The official Balatro is single-player only. The community multiplayer mod runs 1v1 matches joined by room code, with a planned Battle Royale for up to 8 players ([PCGamesN](https://www.pcgamesn.com/balatro/multiplayer-mod)). Gamble Balatro ships both: a 1v1 mode and a table mode, with a **max of 8 players per table**.
+The official Balatro is single-player only. The community multiplayer mod runs 1v1 matches joined by room code, with a planned Battle Royale for up to 8 players ([PCGamesN](https://www.pcgamesn.com/balatro/multiplayer-mod)). Gambl Balatro ships both: a 1v1 mode and a table mode, with a **max of 8 players per table**.
 
 | Mode | Players | Rules |
 | --- | --- | --- |
@@ -411,7 +411,7 @@ The game hub tile must show finished cover art and the title, never a blank card
 
 **Concept.** A fanned hand of three cards on green felt under a spotlight: an Ace of Hearts on the left, a gold-trimmed Royal Flush fan behind, and an original Joker card in front. The Joker is a new character: a sharp-dressed casino dealer in a navy vest and gold bow tie, grinning, with a jester-style hat in red and gold. Poker chips (red, blue, black, gold) are scattered in the foreground, one chip stack mid-topple.
 
-**Title treatment.** "GAMBLE BALATRO" in gold beveled display serif across the top, with a small "GAMBLE SERIES" tag in ivory above it. Dark navy-to-black gradient frame with a thin gold border.
+**Title treatment.** "GAMBL BALATRO" in gold beveled display serif across the top, with a small "GAMBL SERIES" tag in ivory above it. Dark navy-to-black gradient frame with a thin gold border.
 
 **Deliverables**
 
@@ -426,7 +426,7 @@ The game hub tile must show finished cover art and the title, never a blank card
 
 ## Tech stack and acceptance criteria
 
-Build on the same web stack as the rest of the Gamble series: React + TypeScript front end, PixiJS for the table and card animation, Node.js + WebSocket (Socket.IO) server for rooms, Howler.js for audio.
+Build on the same web stack as the rest of the Gambl series: React + TypeScript front end, PixiJS for the table and card animation, Node.js + WebSocket (Socket.IO) server for rooms, Howler.js for audio.
 
 **Architecture rules**
 
