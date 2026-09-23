@@ -1,9 +1,66 @@
-import {useEffect,useRef} from 'react';
-import * as THREE from 'three';
-export function TableScene({motion=true}:{motion?:boolean}){
- const ref=useRef<HTMLDivElement>(null);
- useEffect(()=>{const host=ref.current;if(!host)return;let renderer:THREE.WebGLRenderer;try{renderer=new THREE.WebGLRenderer({alpha:true,antialias:false,powerPreference:'low-power'});}catch{return;}
- renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));host.appendChild(renderer.domElement);const scene=new THREE.Scene();const camera=new THREE.OrthographicCamera(-1,1,1,-1,0,1);const material=new THREE.ShaderMaterial({transparent:true,uniforms:{time:{value:0},resolution:{value:new THREE.Vector2()}},vertexShader:'varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position,1.0); }',fragmentShader:`precision mediump float;varying vec2 vUv;uniform float time;uniform vec2 resolution;float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}void main(){vec2 p=vUv;float grain=hash(floor(p*resolution))*0.032;float glow=exp(-3.0*length((p-vec2(.57,.60))*vec2(1.0,1.25)));float wave=sin(p.x*8.0+p.y*5.0+time*.13)*.008;vec3 color=mix(vec3(.018,.07,.057),vec3(.035,.21,.145),glow)+grain+wave;gl_FragColor=vec4(color,1.0);}`});const geometry=new THREE.PlaneGeometry(2,2);scene.add(new THREE.Mesh(geometry,material));
- const resize=()=>{renderer.setSize(host.clientWidth,host.clientHeight);material.uniforms.resolution.value.set(host.clientWidth,host.clientHeight);renderer.render(scene,camera);};const obs=new ResizeObserver(resize);obs.observe(host);let frame=0,last=0;const draw=(t:number)=>{if(t-last>45&&!document.hidden){material.uniforms.time.value=t/1000;renderer.render(scene,camera);last=t;}frame=requestAnimationFrame(draw);};if(motion)frame=requestAnimationFrame(draw);resize();return()=>{cancelAnimationFrame(frame);obs.disconnect();geometry.dispose();material.dispose();renderer.dispose();renderer.domElement.remove();};},[motion]);
- return <div ref={ref} className="webgl-table" aria-hidden="true"/>;
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
+export function TableScene({ motion = true }: { motion?: boolean }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const host = ref.current;
+    if (!host) return;
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        alpha: true,
+        antialias: false,
+        powerPreference: "low-power",
+      });
+    } catch {
+      return;
+    }
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+    host.appendChild(renderer.domElement);
+    const scene = new THREE.Scene();
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    const material = new THREE.ShaderMaterial({
+      transparent: true,
+      uniforms: {
+        time: { value: 0 },
+        resolution: { value: new THREE.Vector2() },
+      },
+      vertexShader:
+        "varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position,1.0); }",
+      fragmentShader: `precision mediump float;varying vec2 vUv;uniform float time;uniform vec2 resolution;float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}void main(){vec2 p=vUv;float grain=hash(floor(p*resolution))*0.032;float glow=exp(-3.0*length((p-vec2(.57,.60))*vec2(1.0,1.25)));float wave=sin(p.x*8.0+p.y*5.0+time*.13)*.008;vec3 color=mix(vec3(.018,.07,.057),vec3(.035,.21,.145),glow)+grain+wave;gl_FragColor=vec4(color,1.0);}`,
+    });
+    const geometry = new THREE.PlaneGeometry(2, 2);
+    scene.add(new THREE.Mesh(geometry, material));
+    const resize = () => {
+      renderer.setSize(host.clientWidth, host.clientHeight);
+      material.uniforms.resolution.value.set(
+        host.clientWidth,
+        host.clientHeight,
+      );
+      renderer.render(scene, camera);
+    };
+    const obs = new ResizeObserver(resize);
+    obs.observe(host);
+    let frame = 0,
+      last = 0;
+    const draw = (t: number) => {
+      if (t - last > 45 && !document.hidden) {
+        material.uniforms.time.value = t / 1000;
+        renderer.render(scene, camera);
+        last = t;
+      }
+      frame = requestAnimationFrame(draw);
+    };
+    if (motion) frame = requestAnimationFrame(draw);
+    resize();
+    return () => {
+      cancelAnimationFrame(frame);
+      obs.disconnect();
+      geometry.dispose();
+      material.dispose();
+      renderer.dispose();
+      renderer.domElement.remove();
+    };
+  }, [motion]);
+  return <div ref={ref} className="webgl-table" aria-hidden="true" />;
 }

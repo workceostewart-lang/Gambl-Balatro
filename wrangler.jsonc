@@ -2,9 +2,12 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "gambl-balatro",
   "compatibility_date": "2026-09-22",
-  "assets": { "directory": "./dist", "not_found_handling": "single-page-application" },
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application",
+  },
   "routes": [
     { "pattern": "balatro.fantomzone.app", "custom_domain": true },
-    { "pattern": "balatro.fantomzone.app/*", "zone_name": "fantomzone.app" }
-  ]
+    { "pattern": "balatro.fantomzone.app/*", "zone_name": "fantomzone.app" },
+  ],
 }
