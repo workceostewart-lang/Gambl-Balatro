@@ -2620,3 +2620,296 @@ dialog h3 {
     display: none;
   }
 }
+
+/* Music controls and Records are independent of the game layout. */
+.music-controls {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-right: 8px;
+}
+.music-controls .music-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  border: 1px solid #bda15d;
+  border-radius: 999px;
+  background: #0b1f35;
+  color: #e5cd8b;
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  padding: 8px 13px;
+}
+.music-controls .music-toggle i {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin: 0;
+  border-radius: 50%;
+  background: #89918d;
+}
+.music-controls .music-on i {
+  background: #78c898;
+  box-shadow: 0 0 7px #78c89866;
+}
+.app.records-open {
+  height: 100dvh;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: max(10px, env(safe-area-inset-bottom));
+}
+.records-open .topbar {
+  flex-shrink: 0;
+  width: 100%;
+}
+.records-screen {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  max-width: 920px;
+  align-self: center;
+  padding-top: clamp(10px, 3vh, 30px);
+}
+.records-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
+  border: 1px solid #bda15d66;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #0b1f35ed;
+  box-shadow: 0 16px 45px #0004;
+}
+.records-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.records-heading h1 {
+  font-size: 30px;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  color: var(--gold);
+  text-shadow: none;
+}
+.records-heading > span {
+  font-size: 28px;
+  color: var(--gold);
+  width: 95px;
+  text-align: right;
+}
+.record-list {
+  list-style: none;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  min-height: 0;
+  margin: 0;
+  padding: 8px 16px 16px;
+  flex: 1;
+}
+.record-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  gap: 18px;
+  min-height: 66px;
+  border-bottom: 1px solid var(--line);
+  border-left: 3px solid transparent;
+  background: transparent;
+  padding: 14px 16px;
+  font-size: 15px;
+}
+.record-row:hover {
+  background: #d4af3712;
+}
+.record-row.playing {
+  background: #d4af3720;
+  border-left-color: var(--gold);
+  color: #f1d78a;
+}
+.record-row:focus-visible {
+  outline-offset: -3px;
+}
+.record-number {
+  color: #a4b1b6;
+  font-size: 12px;
+  width: 24px;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.record-title {
+  flex: 1;
+  min-width: 0;
+}
+.record-playing {
+  color: var(--gold);
+  font-size: 21px;
+}
+.record-duration {
+  color: #b8c6ca;
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+}
+.records-credit {
+  flex-shrink: 0;
+  padding: 17px 8px 4px;
+  text-align: center;
+  color: #b4c1b8;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.music-error {
+  position: fixed;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: min(90vw, 500px);
+  background: #10293a;
+  border: 1px solid var(--gold);
+  color: #f1d78a;
+  padding: 12px 18px;
+  z-index: 25;
+  font-size: 12px;
+}
+@media (max-width: 900px) {
+  .topbar .hub-word {
+    display: none;
+  }
+  .music-controls {
+    gap: 5px;
+    margin-right: 0;
+  }
+  .music-controls .music-toggle {
+    font-size: 9px;
+    padding: 7px 10px;
+  }
+}
+@media (max-width: 650px) and (orientation: portrait) {
+  .topbar .hub-link {
+    font-size: 0;
+    gap: 5px;
+  }
+  .topbar .hub-link .fz {
+    font-size: 16px;
+  }
+  .music-controls .edition.music-toggle {
+    font-size: 9px;
+    padding: 7px 8px;
+    margin: 0;
+    min-height: 32px;
+  }
+  .topbar {
+    gap: 7px;
+  }
+  .records-heading {
+    padding: 12px;
+    gap: 8px;
+  }
+  .records-heading h1 {
+    font-size: 24px;
+  }
+  .records-heading > span {
+    width: 50px;
+  }
+  .records-heading .secondary {
+    padding: 8px 12px;
+    min-height: 38px;
+    font-size: 11px;
+  }
+  .record-list {
+    padding: 5px 7px;
+  }
+  .record-row {
+    padding: 12px 8px;
+    gap: 9px;
+    font-size: 13px;
+    min-height: 66px;
+  }
+  .record-number {
+    width: 19px;
+    font-size: 10px;
+  }
+  .record-duration {
+    font-size: 10px;
+  }
+  .records-credit {
+    font-size: 10px;
+    padding-top: 10px;
+  }
+}
+@media (orientation: landscape) and (max-height: 550px) {
+  .music-controls .music-toggle {
+    font-size: 8px;
+    padding: 6px 9px;
+    min-height: 30px;
+  }
+  .records-heading {
+    padding: 8px 16px;
+  }
+  .records-heading h1 {
+    font-size: 23px;
+  }
+  .records-heading .secondary {
+    min-height: 31px;
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+  .record-row {
+    min-height: 46px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  .record-list {
+    padding: 3px 8px;
+  }
+  .records-credit {
+    font-size: 9px;
+    padding-top: 7px;
+  }
+}
+.record-playing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 20px;
+  height: 20px;
+}
+.record-playing i {
+  display: block;
+  width: 3px;
+  height: 14px;
+  background: var(--gold);
+  border-radius: 2px;
+  animation: record-meter 0.85s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+.record-playing i:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.record-playing i:nth-child(3) {
+  animation-delay: -0.6s;
+}
+@keyframes record-meter {
+  from {
+    transform: scaleY(0.3);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .record-playing i {
+    animation: none;
+  }
+}
