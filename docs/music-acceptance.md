@@ -31,7 +31,7 @@ The PRD requires: “Before any public release or monetization, re-verify each t
 
 The archive contains the PRD and six MP3s, but no download-page links or license certificates. The general Pixabay license summary was accessible at https://pixabay.com/service/license-summary/; it is not proof of each supplied track's provenance. Requests for all five numbered Pixabay music pages and the matching-title StockTune page received HTTP 403 challenges. The StockTune search result alone is insufficient to identify the exact supplied recording.
 
-Original download-page links or certificates were requested from the user. Track-specific verification and saved license copies remain pending. No public push or deployment of these MP3s has been performed. This is the PRD's explicit release condition, not an additional inferred approval requirement.
+The user confirmed that no license certificates exist and will supply the source-page URLs and saved PDFs. `licenses/music/LICENSES.md` now contains all six official titles and supplied artist names, with TODO source URLs and verification dates; the StockTune artist and exact license remain unverified. Track-specific verification and saved PDFs remain pending. This blocks release only, not local implementation or testing. No public push or deployment of these MP3s has been performed. This is the PRD's explicit release condition, not an additional inferred approval requirement.
 
 ## Files changed
 
@@ -40,4 +40,5 @@ Original download-page links or certificates were requested from the user. Track
 - Updated `src/main.tsx`, `src/style.css`, and the music section of `README.md`.
 - Removed the obsolete synthesized player `src/soundtrack.ts`.
 - Added `tests/music.test.ts`; updated `scripts/music-check.mjs` for actual MP3 playback and the PRD behavior.
+- Added `licenses/music/LICENSES.md`, ready for the user-supplied PDFs.
 - Added this acceptance review. The supplied music PRD, ZIP, main game PRD, gameplay engine, homepage, and other games were not edited.
