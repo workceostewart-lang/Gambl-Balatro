@@ -25,13 +25,9 @@ Music browser matrix: Chrome, Edge, and WebKit at 1280×720, 667×375, and 390×
 
 Required commands: `npm test` (36 passed), `npm run build` (passed), `scripts/browser-check.mjs` against local dev server (eight viewports; no issues). Detailed JSON and screenshots are in ignored `test-results/`. Run `MUSIC_BROWSER=chrome`, `msedge`, or `webkit` with `scripts/music-check.mjs`; TEST_URL selects the local/preview URL.
 
-## Public-release prerequisite — pending
+## Release verification record
 
-The PRD requires: “Before any public release or monetization, re-verify each track's license on its source page and keep a copy of the license text with the project.”
-
-The archive contains the PRD and six MP3s, but no download-page links or license certificates. The general Pixabay license summary was accessible at https://pixabay.com/service/license-summary/; it is not proof of each supplied track's provenance. Requests for all five numbered Pixabay music pages and the matching-title StockTune page received HTTP 403 challenges. The StockTune search result alone is insufficient to identify the exact supplied recording.
-
-The user confirmed that no license certificates exist and will supply the source-page URLs and saved PDFs. `licenses/music/LICENSES.md` now contains all six official titles and supplied artist names, with TODO source URLs and verification dates; the StockTune artist and exact license remain unverified. Track-specific verification and saved PDFs remain pending. This blocks release only, not local implementation or testing. No public push or deployment of these MP3s has been performed. This is the PRD's explicit release condition, not an additional inferred approval requirement.
+On 2026-09-24, the user confirmed all six tracks are verified and authorized public push and deployment. The register records the supplied license names, dates, five Pixabay URLs, and StockTune artist. No PDFs are present; the user accepts source URLs and verification dates as records. The supplied StockTune URL remains placeholder text, explicitly identified in the register rather than presented as a real link.
 
 ## Files changed
 
